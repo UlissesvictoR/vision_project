@@ -27,7 +27,7 @@ class FaceDetectionController extends GetxController {
   Future<void> _initCamera() async {
     final cameras = await availableCameras();
     cameraController = CameraController(
-      cameras.last,
+      cameras.firstWhere((e)=> e.lensDirection.name == "front"),
       ResolutionPreset.high,
       enableAudio: false,
     );
